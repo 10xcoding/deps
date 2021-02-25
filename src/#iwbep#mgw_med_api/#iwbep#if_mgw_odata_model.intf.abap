@@ -1,0 +1,156 @@
+*"* components of interface /IWBEP/IF_MGW_ODATA_MODEL
+interface /IWBEP/IF_MGW_ODATA_MODEL
+  public .
+
+
+  types S type CHAR1 .
+
+  interface /IWBEP/IF_MGW_MED_ODATA_TYPES load .
+  methods CALCULATE_EXTERNAL_ENTITY_ID
+    importing
+      !IV_ENTITY_NAME type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_NAME
+    returning
+      value(R_ENTITY_ID) type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_ID
+    raising
+      /IWBEP/CX_MGW_MED_EXCEPTION .
+  methods CREATE_ACTION
+    importing
+      !IV_ACTION_NAME type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_NAME
+    returning
+      value(RO_ACTION) type ref to /IWBEP/IF_MGW_ODATA_ACTION
+    raising
+      /IWBEP/CX_MGW_MED_EXCEPTION .
+  type-pools ABAP .
+  methods CREATE_ASSOCIATION
+    importing
+      !IV_ASSOCIATION_NAME type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_NAME
+      !IV_LEFT_TYPE type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_NAME
+      !IV_RIGHT_TYPE type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_NAME
+      !IV_LEFT_CARD type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_CARDINALITY
+      !IV_RIGHT_CARD type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_CARDINALITY
+      !IV_DEF_ASSOC_SET type ABAP_BOOL default ABAP_TRUE
+    returning
+      value(RO_ASSOCIATION) type ref to /IWBEP/IF_MGW_ODATA_ASSOC
+    raising
+      /IWBEP/CX_MGW_MED_EXCEPTION .
+  methods CREATE_ASSOCIATION_SET
+    importing
+      !IV_ASSOCIATION_SET_NAME type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_NAME
+      !IV_LEFT_ENTITY_SET_NAME type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_NAME
+      !IV_RIGHT_ENTITY_SET_NAME type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_NAME
+      !IV_ASSOCIATION_NAME type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_NAME optional
+    returning
+      value(RO_ASSOCIATION_SET) type ref to /IWBEP/IF_MGW_ODATA_ASSOC_SET
+    raising
+      /IWBEP/CX_MGW_MED_EXCEPTION .
+  methods CREATE_COMPLEX_TYPE
+    importing
+      !IV_CPLX_TYPE_NAME type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_NAME
+    returning
+      value(RO_COMPLEX_TYPE) type ref to /IWBEP/IF_MGW_ODATA_CMPLX_TYPE
+    raising
+      /IWBEP/CX_MGW_MED_EXCEPTION .
+  methods CREATE_ENTITY_TYPE
+    importing
+      !IV_ENTITY_TYPE_NAME type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_NAME
+      !IV_DEF_ENTITY_SET type ABAP_BOOL default ABAP_TRUE
+    returning
+      value(RO_ENTITY) type ref to /IWBEP/IF_MGW_ODATA_ENTITY_TYP
+    raising
+      /IWBEP/CX_MGW_MED_EXCEPTION .
+  methods CREATE_TAG
+    importing
+      !IV_TAG_ID type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_ID
+    returning
+      value(RO_TAG) type ref to /IWBEP/IF_MGW_ODATA_TAG
+    raising
+      /IWBEP/CX_MGW_MED_EXCEPTION .
+  methods CREATE_TAG_LONG
+    importing
+      !IV_TAG_ID_LONG type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_TAG
+    returning
+      value(RO_TAG) type ref to /IWBEP/IF_MGW_ODATA_TAG
+    raising
+      /IWBEP/CX_MGW_MED_EXCEPTION .
+  methods EXTEND_MODEL
+    importing
+      !IV_MODEL_NAME type /IWBEP/MED_MDL_TECHNICAL_NAME
+      !IV_MODEL_VERSION type /IWBEP/MED_MDL_VERSION default '0001'
+    raising
+      /IWBEP/CX_MGW_MED_EXCEPTION .
+  methods GET_ACTION
+    importing
+      !IV_ACTION_NAME type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_NAME
+    returning
+      value(RO_ACTION) type ref to /IWBEP/IF_MGW_ODATA_ACTION
+    raising
+      /IWBEP/CX_MGW_MED_EXCEPTION .
+  methods GET_ASSOCIATION
+    importing
+      !IV_ASSOCIATION_NAME type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_NAME
+    returning
+      value(RO_ASSOCIATION) type ref to /IWBEP/IF_MGW_ODATA_ASSOC
+    raising
+      /IWBEP/CX_MGW_MED_EXCEPTION .
+  methods GET_ASSOCIATION_SET
+    importing
+      !IV_ASSOC_SET_NAME type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_NAME
+    returning
+      value(RO_ASSOC_SET) type ref to /IWBEP/IF_MGW_ODATA_ASSOC_SET .
+  methods GET_COMPLEX_TYPE
+    importing
+      !IV_CPLX_TYPE_NAME type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_NAME
+    returning
+      value(RO_COMPLEX_TYPE) type ref to /IWBEP/IF_MGW_ODATA_CMPLX_TYPE
+    raising
+      /IWBEP/CX_MGW_MED_EXCEPTION .
+  methods GET_ENTITY_SET
+    importing
+      !IV_ENTITY_SET_NAME type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_NAME
+    returning
+      value(RO_ENTITY_SET) type ref to /IWBEP/IF_MGW_ODATA_ENTITY_SET .
+  methods GET_ENTITY_TYPE
+    importing
+      !IV_ENTITY_NAME type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_NAME
+    returning
+      value(RO_ENTITY_TYPE) type ref to /IWBEP/IF_MGW_ODATA_ENTITY_TYP
+    raising
+      /IWBEP/CX_MGW_MED_EXCEPTION .
+  methods GET_NO_CONVERSION
+    returning
+      value(RV_NO_CONVERSION) type ABAP_BOOL .
+  methods INCLUDE_MODEL_BY_MAPPING_ID
+    importing
+      !IV_EXTERNAL_MAPPING_ID type /IWBEP/MED_EXTERNAL_MAPPING_ID .
+  methods INCLUDE_MODEL_BY_NAME
+    importing
+      !IV_SERVICE_VERSION type /IWBEP/MED_GRP_VERSION default '0001'
+      !IV_MODEL_VERSION type /IWBEP/MED_MDL_VERSION default '0001'
+      !IV_SERVICE_EXTERNAL_NAME type /IWBEP/MED_GRP_TECHNICAL_NAME optional
+      !IV_MODEL_TECH_NAME type /IWBEP/MED_MDL_TECHNICAL_NAME .
+  methods INCLUDE_MODEL_BY_SERVICE_ID
+    importing
+      !IV_SERVICE_IDENTIFIER type /IWBEP/MED_GRP_TECHNICAL_NAME
+      !IV_SERVICE_VERSION type /IWBEP/MED_GRP_VERSION default '0001'
+      !IV_MODEL_IDENTIFIER type /IWBEP/MED_MDL_TECHNICAL_NAME
+      !IV_MODEL_VERSION type /IWBEP/MED_MDL_VERSION default '0001' .
+  interface /IWBEP/IF_MGW_APPL_TYPES load .
+  methods SET_MODEL_FEATURES
+    importing
+      !IS_MODEL_FEATURES type /IWBEP/IF_MGW_APPL_TYPES=>TY_S_MODEL_FEATURES .
+  methods SET_NO_CONVERSION
+    importing
+      !IV_NO_CONVERSION type ABAP_BOOL .
+  methods SET_SCHEMA_NAMESPACE
+    importing
+      !IV_NAMESPACE type STRING .
+  methods SET_SERVICE_SCHEMA_VERSION
+    importing
+      !IV_SERVICE_SCHEMA_VERSION type /IWBEP/MED_SRV_SCHEMA_VERSION .
+  methods SET_SOFT_STATE_ENABLED
+    importing
+      !IV_SOFT_STATE_ENABLED type ABAP_BOOL .
+  methods SET_USE_BATCH
+    importing
+      !IV_USE_BATCH type ABAP_BOOL .
+endinterface.

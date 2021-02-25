@@ -1,0 +1,43 @@
+*"* components of interface /IWBEP/IF_MGW_ODATA_ASSOC_SET
+interface /IWBEP/IF_MGW_ODATA_ASSOC_SET
+  public .
+
+
+  interfaces /IWBEP/IF_MGW_ODATA_ITEM .
+
+  aliases GET_ID
+    for /IWBEP/IF_MGW_ODATA_ITEM~GET_ID .
+  aliases SET_LABEL_FROM_TEXT_ELEMENT
+    for /IWBEP/IF_MGW_ODATA_ITEM~SET_LABEL_FROM_TEXT_ELEMENT .
+  aliases SET_NAME
+    for /IWBEP/IF_MGW_ODATA_ITEM~SET_NAME .
+
+  types C1 type CHAR1 .
+
+  methods CREATE_ANNOTATION
+    importing
+      !IV_ANNOTATION_NAMESPACE type /IWBEP/MED_ANNO_NAMESPACE
+    returning
+      value(RO_ANNOTATION) type ref to /IWBEP/IF_MGW_ODATA_ANNOTATION
+    raising
+      /IWBEP/CX_MGW_MED_EXCEPTION .
+  methods CREATE_ASSOCIATION
+    importing
+      !IV_ASSOCIATION_NAME type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_NAME
+      !IV_LEFT_CARD type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_CARDINALITY
+      !IV_RIGHT_CARD type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_CARDINALITY
+    returning
+      value(RO_ASSOCIATION) type ref to /IWBEP/IF_MGW_ODATA_ASSOC
+    raising
+      /IWBEP/CX_MGW_MED_EXCEPTION .
+  methods SET_LEFT_ENTITYSET_ID
+    importing
+      !IV_ENTITY_ID type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_ID .
+  methods SET_RIGHT_ENTITYSET_ID
+    importing
+      !IV_ENTITY_ID type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_ID .
+  type-pools ABAP .
+  methods SET_DISABLED
+    importing
+      !IV_DISABLED type ABAP_BOOL default ABAP_TRUE .
+endinterface.

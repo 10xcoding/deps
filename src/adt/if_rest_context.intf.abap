@@ -1,3 +1,0 @@
-INTERFACE if_rest_context PUBLIC.
-
-ENDINTERFACE.

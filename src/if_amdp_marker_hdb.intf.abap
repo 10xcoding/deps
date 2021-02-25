@@ -1,3 +1,0 @@
-INTERFACE if_amdp_marker_hdb PUBLIC.
-
-ENDINTERFACE.

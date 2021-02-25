@@ -1,0 +1,3 @@
+FUNCTION transaction_end.
+  RETURN.
+ENDFUNCTION.
